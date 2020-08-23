@@ -1,31 +1,31 @@
 
-$('#currentDay').text(moment().format('dddd, MMMM Mo' ));
+$('#currentDay').text(moment().format('dddd, MMMM Mo hh:mm A' ));
 
-let currentHour = moment('12 PM', 'hh A').format('HH');
-console.log(currentHour);
-
-
-console.log(timeBlockTime = $('.row'));
-
-for (t = 0; t < 9; t++) {
-let timeBlockTime = $('.row')[t].children[0].textContent;
-                            // set to i
-let timeBlockMoment = moment(timeBlockTime, "hh A").format('HH');
-
+let currentHour = moment().format('HH');
 let intTime = parseInt(currentHour);
-let intMoment = parseInt(timeBlockMoment);
 
-if (intMoment < intTime) {
-    console.log($('.row')[t].children[1]);
-    let addPast = $('.row')[t].children[1];
-    $(addPast).addClass('past');
-} else if (intMoment === intTime) {
-    let addPresent = $('.row')[t].children[1];
-    $(addPresent).addClass('present');
-} else {
-    let addFuture = $('.row')[t].children[1];
-    $(addFuture).addClass('future');
-}
+// Run Loop to Style Each Time-Block Based on the Current Time
+for (t = 0; t < 9; t++) {
+    // Grab the textContent From the Current Time-Block
+    let timeBlockTime = $('.row')[t].children[0].textContent;
+    // Convert timeBlock Into Moment JS Hour                           
+    let timeBlockMoment = moment(timeBlockTime, "hh A").format('HH');
+
+    // Convert timeBlockMoment and Current Hour into Integers
+    
+    let intMoment = parseInt(timeBlockMoment);
+    // Conditional Statement to Check if Current Time-Block is in the Past, Present, or Future
+    if (intMoment < intTime) {
+        console.log($('.row')[t].children[1]);
+        let addPast = $('.row')[t].children[1];
+        $(addPast).addClass('past');
+    } else if (intMoment === intTime) {
+        let addPresent = $('.row')[t].children[1];
+        $(addPresent).addClass('present');
+    } else {
+        let addFuture = $('.row')[t].children[1];
+        $(addFuture).addClass('future');
+    }
 
 
 }
@@ -82,6 +82,9 @@ $('.container').on('click', function(event){
     });
 
 
+    if (intTime >= 22) {
+        localStorage.clear();
+    }
 
 
     // Current Bugs
