@@ -1,5 +1,5 @@
 
-$('#currentDay').text(moment().format('dddd, MMMM Mo hh:mm A' ));
+$('#currentDay').text(moment().format('dddd, MMMM Mo' ));
 
 let currentHour = moment().format('HH');
 let intTime = parseInt(currentHour);
@@ -87,7 +87,4 @@ $('.container').on('click', function(event){
     }
 
 
-    // Current Bugs
-
-        // time-block will display null if their corelating key has been deleted
-            // Make a conditional in checkLocal if key is not null??
+    
